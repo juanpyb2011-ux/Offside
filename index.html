@@ -7,20 +7,59 @@
 
 <style>
 body{font-family:Arial;margin:0;background:#f5f1e8;color:#000}
-header{background:#000;color:#fff;padding:20px;text-align:center;font-size:24px;font-weight:bold;letter-spacing:2px}
+header{background:#000;color:#fff;padding:15px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:bold;letter-spacing:2px}
+.menu-btn{font-size:22px;cursor:pointer}
+
+/* MENÚ */
+.sidebar{
+position:fixed;
+top:0;
+left:-250px;
+width:250px;
+height:100%;
+background:#000;
+color:#fff;
+padding:20px;
+transition:0.3s;
+z-index:1000;
+}
+.sidebar a{
+display:block;
+color:#fff;
+text-decoration:none;
+margin:15px 0;
+font-size:18px;
+cursor:pointer;
+}
+.sidebar a:hover{color:#c2b59b}
+
 .container{padding:20px}
 .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
 .card{background:#fff;padding:15px;border-radius:12px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
 .card img{width:100%;border-radius:10px}
 button{background:#000;color:#fff;border:none;padding:10px;margin-top:10px;cursor:pointer;border-radius:6px;transition:0.3s}
 button:hover{background:#c2b59b;color:#000}
-.cart{position:fixed;top:20px;right:20px;background:#000;color:#fff;padding:15px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.2)}
+.cart{position:fixed;top:70px;right:20px;background:#000;color:#fff;padding:15px;border-radius:12px}
 h2{color:#000}
+.hidden{display:none}
 </style>
 </head>
 
 <body>
-<header>OFFSIDE</header>
+
+<!-- MENÚ LATERAL -->
+<div class="sidebar" id="menu">
+<h3>Menú</h3>
+<a onclick="showCategory('all')">Todo</a>
+<a onclick="showCategory('sudaderas')">Sudaderas</a>
+<a onclick="showCategory('playeras')">Playeras</a>
+</div>
+
+<header>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="logo">OFFSIDE</div>
+</header>
 
 <div class="cart">
 🛒 <span id="cart-count">0</span>
@@ -33,16 +72,16 @@ h2{color:#000}
 
 <div class="products" id="products">
 
-<!-- PRODUCTO 1 -->
-<div class="card">
+<!-- SUDADERA -->
+<div class="card sudaderas">
 <img src="LINK_DE_TU_IMAGEN_AQUI" alt="Producto">
 <h3>Sudadera Offside Negra</h3>
 <p>$499 MXN</p>
 <button onclick="addToCart('Sudadera Offside Negra',499)">Agregar</button>
 </div>
 
-<!-- PRODUCTO 2 -->
-<div class="card">
+<!-- PLAYERA -->
+<div class="card playeras">
 <img src="LINK_DE_TU_IMAGEN_AQUI" alt="Producto">
 <h3>Playera Offside Blanca</h3>
 <p>$299 MXN</p>
@@ -54,6 +93,25 @@ h2{color:#000}
 
 <script>
 let cart = [];
+
+function toggleMenu(){
+let menu = document.getElementById('menu');
+menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
+}
+
+function showCategory(category){
+let products = document.querySelectorAll('.card');
+
+products.forEach(p => {
+if(category === 'all'){
+p.style.display = 'block';
+} else {
+p.style.display = p.classList.contains(category) ? 'block' : 'none';
+}
+});
+
+toggleMenu();
+}
 
 function addToCart(name, price){
 cart.push({name,price});
