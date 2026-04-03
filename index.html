@@ -371,9 +371,49 @@ message += `%0ATotal: $${total}`;
 
 window.open(`https://wa.me/52224290839?text=${message}`,'_blank');
 }
-</script>
+  <script>
+let cart = [];
 let selectedProduct = {};
 
+function toggleMenu(){
+let menu = document.getElementById('menu');
+menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
+}
+
+function showCategory(category){
+let products = document.querySelectorAll('.card');
+
+products.forEach(p => {
+if(category === 'all'){
+p.style.display = 'block';
+} else {
+p.style.display = p.classList.contains(category) ? 'block' : 'none';
+}
+});
+
+toggleMenu();
+}
+
+function addToCart(name, price){
+cart.push({name,price});
+document.getElementById('cart-count').innerText = cart.length;
+}
+
+function sendWhatsApp(){
+let message = 'Hola, quiero comprar:%0A';
+let total = 0;
+
+cart.forEach(item => {
+message += `- ${item.name} ($${item.price})%0A`;
+total += item.price;
+});
+
+message += `%0ATotal: $${total}`;
+
+window.open(`https://wa.me/52224290839?text=${message}`,'_blank');
+}
+
+/* 🔥 MODAL */
 function openModal(name, price, images){
 document.getElementById('product-modal').style.display = 'flex';
 
@@ -410,5 +450,8 @@ document.getElementById('cart-count').innerText = cart.length;
 
 closeModal();
 }
+</script>
+</script>
+
 </body>
 </html>
