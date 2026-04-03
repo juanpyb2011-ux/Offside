@@ -83,42 +83,90 @@ h2{color:#000}
 <div class="products" id="products">
 
 <!-- SUDADERAS -->
-<div class="card sudaderas">
+<div class="card sudaderas" onclick="openModal(
+'Sudadera Offside Black',
+499,
+[
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
+]
+)">
 <img src="https://i.postimg.cc/cLhjyrCh/Gemini-Generated-Image-ods66jods66jods6.png" alt="Producto">
 <h3>Sudadera Offside Black</h3>
 <p>$499 MXN</p>
 <button onclick="addToCart('Sudadera Offside Black',499)">Agregar</button>
 </div>
 
-<div class="card sudaderas">
+<div class="card sudaderas" onclick="openModal(
+'Sudadera Offside Olive',
+499,
+[
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
+]
+)">
 <img src="https://i.postimg.cc/P5JbJxKW/Gemini-Generated-Image-shpxszshpxszshpx.png" alt="Producto">
 <h3>Sudadera Offside Olive</h3>
 <p>$499 MXN</p>
 <button onclick="addToCart('Sudadera Offside Olive',499)">Agregar</button>
 </div>
 
-<div class="card sudaderas">
+<div class="card sudaderas" onclick="openModal(
+'Sudadera Offside Ash Grey',
+499,
+[
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
+]
+)">
 <img src="https://i.postimg.cc/x89TCXGv/Gemini-Generated-Image-vwoelsvwoelsvwoe.png" alt="Producto">
 <h3>Sudadera Offside Ash Grey</h3>
 <p>$499 MXN</p>
 <button onclick="addToCart('Sudadera Offside Ash Grey',499)">Agregar</button>
 </div>
 
-<div class="card sudaderas">
+<div class="card sudaderas" onclick="openModal(
+'Sudadera Offside Blanca',
+499,
+[
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
+]
+)">
 <img src="https://i.postimg.cc/PrtPfR2s/Gemini-Generated-Image-o7wepxo7wepxo7we.png" alt="Producto">
 <h3>Sudadera Offside Blanca</h3>
 <p>$499 MXN</p>
 <button onclick="addToCart('Sudadera Offside Blanca',499)">Agregar</button>
 </div>
 
-<div class="card sudaderas">
+<div class="card sudaderas" onclick="openModal(
+'Sudadera Offside Sand',
+499,
+[
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
+]
+)">
 <img src="https://i.postimg.cc/SRbVzhjK/Gemini-Generated-Image-u8gj15u8gj15u8gj.png" alt="Producto">
 <h3>Sudadera Offside Sand</h3>
 <p>$499 MXN</p>
 <button onclick="addToCart('Sudadera Offside Sand',499)">Agregar</button>
 </div>
 
-<div class="card sudaderas">
+<div class="card sudaderas" onclick="openModal(
+'Sudadera Offside Mocha',
+499,
+[
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
+'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
+]
+)">
 <img src="https://i.postimg.cc/SKXGTsMQ/Gemini-Generated-Image-yfiis5yfiis5yfii.png" alt="Producto">
 <h3>Sudadera Offside Mocha</h3>
 <p>$499 MXN</p>
@@ -219,7 +267,70 @@ h2{color:#000}
 
 </div>
 </div>
+<!-- MODAL PRODUCTO -->
+<div id="product-modal" class="hidden" style="
+position:fixed;
+top:0; left:0;
+width:100%; height:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:2000;
+">
 
+<div style="
+background:#fff;
+width:90%;
+max-width:900px;
+border-radius:15px;
+padding:20px;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+position:relative;
+">
+
+<!-- cerrar -->
+<span onclick="closeModal()" style="
+position:absolute;
+top:10px;
+right:15px;
+font-size:25px;
+cursor:pointer;
+">✖</span>
+
+<!-- IMÁGENES -->
+<div style="flex:1">
+<img id="main-img" src="" style="width:100%; border-radius:10px">
+
+<div style="display:flex; gap:10px; margin-top:10px">
+<img onclick="changeImage(this)" src="" class="thumb" style="width:70px;cursor:pointer">
+<img onclick="changeImage(this)" src="" class="thumb" style="width:70px;cursor:pointer">
+<img onclick="changeImage(this)" src="" class="thumb" style="width:70px;cursor:pointer">
+</div>
+</div>
+
+<!-- INFO -->
+<div style="flex:1">
+<h2 id="product-name"></h2>
+<p id="product-price"></p>
+
+<h4>Talla</h4>
+<select id="size">
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+</select>
+
+<br><br>
+
+<button onclick="addFromModal()">Agregar al carrito</button>
+</div>
+
+</div>
+</div>
 <script>
 let cart = [];
 
@@ -261,6 +372,43 @@ message += `%0ATotal: $${total}`;
 window.open(`https://wa.me/52224290839?text=${message}`,'_blank');
 }
 </script>
+let selectedProduct = {};
 
+function openModal(name, price, images){
+document.getElementById('product-modal').style.display = 'flex';
+
+document.getElementById('product-name').innerText = name;
+document.getElementById('product-price').innerText = `$${price} MXN`;
+
+document.getElementById('main-img').src = images[0];
+
+let thumbs = document.querySelectorAll('.thumb');
+thumbs.forEach((img, i) => {
+img.src = images[i];
+});
+
+selectedProduct = {name, price};
+}
+
+function closeModal(){
+document.getElementById('product-modal').style.display = 'none';
+}
+
+function changeImage(img){
+document.getElementById('main-img').src = img.src;
+}
+
+function addFromModal(){
+let size = document.getElementById('size').value;
+
+cart.push({
+name: selectedProduct.name + ' - Talla ' + size,
+price: selectedProduct.price
+});
+
+document.getElementById('cart-count').innerText = cart.length;
+
+closeModal();
+}
 </body>
 </html>
