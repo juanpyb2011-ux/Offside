@@ -154,7 +154,7 @@ position:relative;
 <div class="products">
 
 <!-- PRODUCTO -->
-<div class="card sudaderas" onclick="openModal('Sudadera Offside Black',499,['https://i.postimg.cc/cLhjyrCh/Gemini-Generated-Image-ods66jods66jods6.png'])">
+<div class="card sudaderas" onclick="openModal('Sudadera Offside Black',499,['https://i.postimg.cc/cLhjyrCh/Gemini-Generated-Image-ods66jods66jods6.png','https://i.postimg.cc/cLhjyrCh/Gemini-Generated-Image-ods66jods66jods6.png', 'https://i.postimg.cc/cLhjyrCh/Gemini-Generated-Image-ods66jods66jods6.png' ])">
 <img src="https://i.postimg.cc/cLhjyrCh/Gemini-Generated-Image-ods66jods66jods6.png">
 <h3>Sudadera Offside Black</h3>
 <p>$499 MXN</p>
@@ -220,7 +220,13 @@ position:relative;
 <span onclick="closeModal()" style="position:absolute;top:10px;right:15px;font-size:25px;cursor:pointer">✖</span>
 
 <div style="flex:1">
-<img id="main-img" style="width:100%">
+<img id="main-img" style="width:100%; border-radius:10px">
+
+<div style="display:flex; gap:10px; margin-top:10px">
+<img onclick="changeImage(this)" class="thumb" style="width:70px;cursor:pointer">
+<img onclick="changeImage(this)" class="thumb" style="width:70px;cursor:pointer">
+<img onclick="changeImage(this)" class="thumb" style="width:70px;cursor:pointer">
+</div>
 </div>
 
 <div style="flex:1">
@@ -278,12 +284,22 @@ message+=`%0ATotal: $${total}`;
 window.open(`https://wa.me/52224290839?text=${message}`,'_blank');
 }
 
-function openModal(name,price,images){
+function openModal(name, price, images){
 document.getElementById('product-modal').style.display='flex';
+
 document.getElementById('product-name').innerText=name;
 document.getElementById('product-price').innerText=`$${price} MXN`;
-document.getElementById('main-img').src=images[0];
-selectedProduct={name,price};
+
+// imagen principal
+document.getElementById('main-img').src = images[0];
+
+// miniaturas
+let thumbs = document.querySelectorAll('.thumb');
+thumbs.forEach((img, i) => {
+img.src = images[i];
+});
+
+selectedProduct = {name, price};
 }
 
 function closeModal(){
@@ -295,6 +311,10 @@ let size=document.getElementById('size').value;
 cart.push({name:selectedProduct.name+' - '+size,price:selectedProduct.price});
 document.getElementById('cart-count').innerText=cart.length;
 closeModal();
+}
+
+  function changeImage(img){
+document.getElementById('main-img').src = img.src;
 }
 
 document.getElementById('product-modal').addEventListener('click',function(e){
