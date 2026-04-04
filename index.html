@@ -11,44 +11,29 @@ header{background:#000;color:#fff;padding:15px;display:flex;align-items:center;j
 .logo{font-size:22px;font-weight:bold;letter-spacing:2px}
 .menu-btn{font-size:22px;cursor:pointer;z-index:1100}
 
-/* MENÚ */
-.sidebar{
-position:fixed;
-top:0;
-left:-250px;
-width:250px;
-height:100%;
-background:#000;
-color:#fff;
-padding:20px;
-transition:0.3s;
-z-index:1200;
-}
-.sidebar a{
-display:block;
-color:#fff;
-text-decoration:none;
-margin:15px 0;
-font-size:18px;
-cursor:pointer;
-}
+.sidebar{position:fixed;top:0;left:-250px;width:250px;height:100%;background:#000;color:#fff;padding:20px;transition:0.3s;z-index:1200}
+.sidebar a{display:block;color:#fff;text-decoration:none;margin:15px 0;font-size:18px;cursor:pointer}
 .sidebar a:hover{color:#c2b59b}
 
 .container{padding:20px}
 .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-.card{background:#fff;padding:15px;border-radius:12px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+.card{background:#fff;padding:15px;border-radius:12px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.1);cursor:pointer}
 .card img{width:100%;border-radius:10px}
 button{background:#000;color:#fff;border:none;padding:10px;margin-top:10px;cursor:pointer;border-radius:6px;transition:0.3s}
 button:hover{background:#c2b59b;color:#000}
-.cart{position:fixed;top:70px;right:20px;background:#000;color:#fff;padding:15px;border-radius:12px}
-h2{color:#000}
-.hidden{display:none}
+
+.cart{position:fixed;bottom:20px;right:20px;background:#000;color:#fff;padding:15px;border-radius:12px}
+
+#product-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;z-index:2000}
+
+.modal-box{background:#fff;width:90%;max-width:900px;border-radius:15px;padding:20px;display:flex;gap:20px;flex-wrap:wrap;position:relative;animation:fadeIn 0.3s ease}
+
+@keyframes fadeIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
 </style>
 </head>
 
 <body>
 
-<!-- MENÚ LATERAL -->
 <div class="sidebar" id="menu">
 <h3>Menú</h3>
 <a onclick="showCategory('all')">Todo</a>
@@ -62,251 +47,52 @@ h2{color:#000}
 </header>
 
 <div class="cart">
-🛒 <span id="cart-count">0</span>
-<br>
+🛒 <span id="cart-count">0</span><br>
 <button onclick="sendWhatsApp()">Comprar</button>
 </div>
 
 <div class="container">
 <h2>Productos</h2>
+<div class="products">
 
-<div class="products" id="products">
-
-<!-- SUDADERAS -->
-<div class="card sudaderas" onclick="openModal(
-'Sudadera Offside Black',
-499,
-[
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
-]
-)">
-<img src="https://i.postimg.cc/cLhjyrCh/Gemini-Generated-Image-ods66jods66jods6.png" alt="Producto">
+<!-- PRODUCTO EJEMPLO CORREGIDO -->
+<div class="card sudaderas" onclick="openModal('Sudadera Offside Black',499,['https://i.postimg.cc/cLhjyrCh/Gemini-Generated-Image-ods66jods66jods6.png'])">
+<img src="https://i.postimg.cc/cLhjyrCh/Gemini-Generated-Image-ods66jods66jods6.png">
 <h3>Sudadera Offside Black</h3>
 <p>$499 MXN</p>
-<button onclick="addToCart('Sudadera Offside Black',499)">Agregar</button>
+<button onclick="event.stopPropagation(); addToCart('Sudadera Offside Black',499)">Agregar</button>
 </div>
 
-<div class="card sudaderas" onclick="openModal(
-'Sudadera Offside Olive',
-499,
-[
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
-]
-)">
-<img src="https://i.postimg.cc/P5JbJxKW/Gemini-Generated-Image-shpxszshpxszshpx.png" alt="Producto">
-<h3>Sudadera Offside Olive</h3>
-<p>$499 MXN</p>
-<button onclick="addToCart('Sudadera Offside Olive',499)">Agregar</button>
-</div>
-
-<div class="card sudaderas" onclick="openModal(
-'Sudadera Offside Ash Grey',
-499,
-[
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
-]
-)">
-<img src="https://i.postimg.cc/x89TCXGv/Gemini-Generated-Image-vwoelsvwoelsvwoe.png" alt="Producto">
-<h3>Sudadera Offside Ash Grey</h3>
-<p>$499 MXN</p>
-<button onclick="addToCart('Sudadera Offside Ash Grey',499)">Agregar</button>
-</div>
-
-<div class="card sudaderas" onclick="openModal(
-'Sudadera Offside Blanca',
-499,
-[
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
-]
-)">
-<img src="https://i.postimg.cc/PrtPfR2s/Gemini-Generated-Image-o7wepxo7wepxo7we.png" alt="Producto">
-<h3>Sudadera Offside Blanca</h3>
-<p>$499 MXN</p>
-<button onclick="addToCart('Sudadera Offside Blanca',499)">Agregar</button>
-</div>
-
-<div class="card sudaderas" onclick="openModal(
-'Sudadera Offside Sand',
-499,
-[
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
-]
-)">
-<img src="https://i.postimg.cc/SRbVzhjK/Gemini-Generated-Image-u8gj15u8gj15u8gj.png" alt="Producto">
-<h3>Sudadera Offside Sand</h3>
-<p>$499 MXN</p>
-<button onclick="addToCart('Sudadera Offside Sand',499)">Agregar</button>
-</div>
-
-<div class="card sudaderas" onclick="openModal(
-'Sudadera Offside Mocha',
-499,
-[
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png',
-'https://i.postimg.cc/MX274c3X/Gemini-Generated-Image-l6mpcll6mpcll6mp.png'
-]
-)">
-<img src="https://i.postimg.cc/SKXGTsMQ/Gemini-Generated-Image-yfiis5yfiis5yfii.png" alt="Producto">
-<h3>Sudadera Offside Mocha</h3>
-<p>$499 MXN</p>
-<button onclick="addToCart('Sudadera Offside Mocha',499)">Agregar</button>
-</div>
-
-<!-- PLAYERA -->
 <div class="card playeras">
-<img src="https://i.postimg.cc/sxQFmLbj/Gemini-Generated-Image-rxgz4hrxgz4hrxgz.png" alt="Producto">
-<h3>Basic Offside Black</h3>
-<p>$299 MXN</p>
-<button onclick="addToCart('Playera Offside Black',299)">Agregar</button>
-</div>
-  <!-- PLAYERAS NUEVAS -->
-<div class="card playeras">
-<img src="https://i.postimg.cc/NfXS2rW3/Gemini-Generated-Image-enenqoenenqoenen.png" alt="Producto">
+<img src="https://i.postimg.cc/NfXS2rW3/Gemini-Generated-Image-enenqoenenqoenen.png">
 <h3>Basic Offside Blanca</h3>
 <p>$299 MXN</p>
-<button onclick="addToCart('Basic Offside Blanca',299)">Agregar</button>
+<button onclick="event.stopPropagation(); addToCart('Basic Offside Blanca',299)">Agregar</button>
 </div>
 
 <div class="card playeras">
-<img src="https://i.postimg.cc/fLv1y4Fg/Gemini-Generated-Image-rxsafkrxsafkrxsa.png" alt="Producto">
-<h3>Basic Offside Verde</h3>
-<p>$299 MXN</p>
-<button onclick="addToCart('Basic Offside Verde',299)">Agregar</button>
-</div>
-
-<div class="card playeras">
-<img src="https://i.postimg.cc/m2nJtyXr/Gemini-Generated-Image-kthzbkkthzbkkthz.png" alt="Producto">
-<h3>Basic Offside Beige</h3>
-<p>$299 MXN</p>
-<button onclick="addToCart('Basic Offside Beige',299)">Agregar</button>
-</div>
-
-  <div class="card playeras">
-<img src="https://i.postimg.cc/B6kggMdV/Gemini-Generated-Image-6xabrz6xabrz6xab.png" alt="Producto">
-<h3>Polo Offside Blanca</h3>
-<p>$299 MXN</p>
-<button onclick="addToCart('Polo Offside Blanca',299)">Agregar</button>
-</div>
-
-  <div class="card playeras">
-<img src="https://i.postimg.cc/R00Lxkm8/Gemini-Generated-Image-mj6anrmj6anrmj6a.png" alt="Producto">
-<h3>Polo Offside Sand</h3>
-<p>$299 MXN</p>
-<button onclick="addToCart('Polo Offside Sand',299)">Agregar</button>
-</div>
-
-  <div class="card playeras">
-<img src="https://i.postimg.cc/ZKF8Bb5z/Gemini-Generated-Image-7qqz3i7qqz3i7qqz.png" alt="Producto">
-<h3>Polo Offside Ocean</h3>
-<p>$299 MXN</p>
-<button onclick="addToCart('Polo Offside Ocean',299)">Agregar</button>
-</div>
-
-  <div class="card playeras">
-<img src="https://i.postimg.cc/MZ1RN6R1/Gemini-Generated-Image-8lhzf88lhzf88lhz.png" alt="Producto">
-<h3>Polo Offside Black</h3>
-<p>$299 MXN</p>
-<button onclick="addToCart('Polo Offside Black',299)">Agregar</button>
-</div>
-
-  <div class="card playeras">
-<img src="https://i.postimg.cc/dVNTrLM8/Gemini-Generated-Image-3b270x3b270x3b27.png" alt="Producto">
-<h3>Polo Offside Olive</h3>
-<p>$299 MXN</p>
-<button onclick="addToCart('Polo Offside Olive',299)">Agregar</button>
-</div>
-
-  <div class="card playeras">
-<img src="https://i.postimg.cc/D0hWnGsm/Gemini-Generated-Image-om521zom521zom52.png" alt="Producto">
-<h3>Polo Offside Capuchino</h3>
-<p>$299 MXN</p>
-<button onclick="addToCart('Polo Offside Cappuchino',299)">Agregar</button>
-</div>
-
-  <div class="card playeras">
-<img src="https://i.postimg.cc/tg3jf3Lj/Gemini-Generated-Image-xl9st8xl9st8xl9s.png" alt="Producto">
-<h3>Fresh Offside Blanca </h3>
+<img src="https://i.postimg.cc/tg3jf3Lj/Gemini-Generated-Image-xl9st8xl9st8xl9s.png">
+<h3>Fresh Offside Blanca</h3>
 <p>$599 MXN</p>
-<button onclick="addToCart('Fresh Offside Blanca',299)">Agregar</button>
-</div>
-
-  <div class="card playeras">
-<img src="https://i.postimg.cc/k4wdMnJZ/Gemini-Generated-Image-vpv80kvpv80kvpv8.png" alt="Producto">
-<h3>Fresh Offside Black</h3>
-<p>$599 MXN</p>
-<button onclick="addToCart('Fresh Offside Black',299)">Agregar</button>
-</div>
-
-  <div class="card playeras">
-<img src="https://i.postimg.cc/qBbd9MZC/Gemini-Generated-Image-u4sqpgu4sqpgu4sq.png" alt="Producto">
-<h3>Fresh Offside Green</h3>
-<p>$599 MXN</p>
-<button onclick="addToCart('Fresh Offside Green',299)">Agregar</button>
+<button onclick="event.stopPropagation(); addToCart('Fresh Offside Blanca',599)">Agregar</button>
 </div>
 
 </div>
 </div>
-<!-- MODAL PRODUCTO -->
-<div id="product-modal" class="hidden" style="
-position:fixed;
-top:0; left:0;
-width:100%; height:100%;
-background:rgba(0,0,0,0.8);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:2000;
-">
 
-<div style="
-background:#fff;
-width:90%;
-max-width:900px;
-border-radius:15px;
-padding:20px;
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-position:relative;
-">
+<!-- MODAL -->
+<div id="product-modal">
+<div class="modal-box">
+<span onclick="closeModal()" style="position:absolute;top:10px;right:15px;font-size:25px;cursor:pointer">✖</span>
 
-<!-- cerrar -->
-<span onclick="closeModal()" style="
-position:absolute;
-top:10px;
-right:15px;
-font-size:25px;
-cursor:pointer;
-">✖</span>
-
-<!-- IMÁGENES -->
 <div style="flex:1">
-<img id="main-img" src="" style="width:100%; border-radius:10px">
-
-<div style="display:flex; gap:10px; margin-top:10px">
-<img onclick="changeImage(this)" src="" class="thumb" style="width:70px;cursor:pointer">
-<img onclick="changeImage(this)" src="" class="thumb" style="width:70px;cursor:pointer">
-<img onclick="changeImage(this)" src="" class="thumb" style="width:70px;cursor:pointer">
-</div>
+<img id="main-img" style="width:100%;border-radius:10px">
 </div>
 
-<!-- INFO -->
 <div style="flex:1">
 <h2 id="product-name"></h2>
 <p id="product-price"></p>
 
-<h4>Talla</h4>
 <select id="size">
 <option>S</option>
 <option>M</option>
@@ -314,93 +100,69 @@ cursor:pointer;
 <option>XL</option>
 </select>
 
-<br><br>
-
-<button onclick="addFromModal()">Agregar al carrito</button>
+<button onclick="addFromModal()">Agregar</button>
 </div>
-
 </div>
 </div>
 
-  <script>
-let cart = [];
-let selectedProduct = {};
+<script>
+let cart=[];
+let selectedProduct={};
 
 function toggleMenu(){
-let menu = document.getElementById('menu');
-menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
+let menu=document.getElementById('menu');
+menu.style.left=menu.style.left==='0px' ? '-250px':'0px';
 }
 
 function showCategory(category){
-let products = document.querySelectorAll('.card');
-
-products.forEach(p => {
-if(category === 'all'){
-p.style.display = 'block';
-} else {
-p.style.display = p.classList.contains(category) ? 'block' : 'none';
-}
+let products=document.querySelectorAll('.card');
+products.forEach(p=>{
+if(category==='all') p.style.display='block';
+else p.style.display=p.classList.contains(category)?'block':'none';
 });
-
 toggleMenu();
 }
 
-function addToCart(name, price){
+function addToCart(name,price){
 cart.push({name,price});
-document.getElementById('cart-count').innerText = cart.length;
+document.getElementById('cart-count').innerText=cart.length;
+alert('Agregado al carrito 🛒');
 }
 
 function sendWhatsApp(){
-let message = 'Hola, quiero comprar:%0A';
-let total = 0;
-
-cart.forEach(item => {
-message += `- ${item.name} ($${item.price})%0A`;
-total += item.price;
+let message='Hola, quiero comprar:%0A';
+let total=0;
+cart.forEach(item=>{
+message+=`- ${item.name} ($${item.price})%0A`;
+total+=item.price;
 });
-
-message += `%0ATotal: $${total}`;
-
+message+=`%0ATotal: $${total}`;
 window.open(`https://wa.me/52224290839?text=${message}`,'_blank');
 }
 
-/* 🔥 MODAL */
-function openModal(name, price, images){
-document.getElementById('product-modal').style.display = 'flex';
-
-document.getElementById('product-name').innerText = name;
-document.getElementById('product-price').innerText = `$${price} MXN`;
-
-document.getElementById('main-img').src = images[0];
-
-let thumbs = document.querySelectorAll('.thumb');
-thumbs.forEach((img, i) => {
-img.src = images[i];
-});
-
-selectedProduct = {name, price};
+function openModal(name,price,images){
+document.getElementById('product-modal').style.display='flex';
+document.getElementById('product-name').innerText=name;
+document.getElementById('product-price').innerText=`$${price} MXN`;
+document.getElementById('main-img').src=images[0];
+selectedProduct={name,price};
 }
 
 function closeModal(){
-document.getElementById('product-modal').style.display = 'none';
-}
-
-function changeImage(img){
-document.getElementById('main-img').src = img.src;
+document.getElementById('product-modal').style.display='none';
 }
 
 function addFromModal(){
-let size = document.getElementById('size').value;
-
-cart.push({
-name: selectedProduct.name + ' - Talla ' + size,
-price: selectedProduct.price
-});
-
-document.getElementById('cart-count').innerText = cart.length;
-
+let size=document.getElementById('size').value;
+cart.push({name:selectedProduct.name+' - '+size,price:selectedProduct.price});
+document.getElementById('cart-count').innerText=cart.length;
 closeModal();
 }
+
+// cerrar modal tocando fondo
+document.getElementById('product-modal').addEventListener('click',function(e){
+if(e.target===this) closeModal();
+});
 </script>
 
 </body>
