@@ -124,6 +124,29 @@ gap:20px;
 flex-wrap:wrap;
 position:relative;
 }
+
+  .thumb-container{
+display:flex;
+gap:10px;
+margin-top:15px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.thumb{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+border:2px solid transparent;
+}
+
+.thumb:hover{
+transform:scale(1.1);
+border:2px solid #000;
+}
 </style>
 </head>
 
@@ -222,7 +245,7 @@ position:relative;
 <div style="flex:1">
 <img id="main-img" style="width:100%; border-radius:10px">
 
-<div style="display:flex; gap:10px; margin-top:10px">
+<div class="thumb-container">
 <img onclick="changeImage(this)" class="thumb" style="width:70px;cursor:pointer">
 <img onclick="changeImage(this)" class="thumb" style="width:70px;cursor:pointer">
 <img onclick="changeImage(this)" class="thumb" style="width:70px;cursor:pointer">
