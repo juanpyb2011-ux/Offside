@@ -26,6 +26,16 @@ top:0;
 z-index:1000;
 }
 
+  <section class="hero">
+<h1>OFFSIDE</h1>
+<p>Streetwear exclusivo. Ediciones limitadas.</p>
+<button onclick="showCategory('all')">Ver colección</button>
+</section>
+
+  <p style="text-align:center;opacity:0.4;font-size:12px">
+Cada prenda contiene un código único. Algunos ganan.
+</p>
+
 .logo{font-size:22px;font-weight:bold;letter-spacing:2px}
 
 /* BOTÓN MENÚ */
@@ -163,6 +173,62 @@ border:2px solid #000;
   h2, h3{
 letter-spacing:1px;
 }
+
+  .hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(to bottom, #000, #0a0a0a);
+}
+
+.hero h1{
+font-size:60px;
+letter-spacing:5px;
+margin:0;
+}
+
+.hero p{
+opacity:0.6;
+margin:10px 0 20px;
+}
+
+.hero button{
+background:#fff;
+color:#000;
+padding:12px 25px;
+border-radius:30px;
+font-weight:bold;
+}
+
+  .card{
+opacity:0;
+transform:translateY(30px);
+animation:fadeIn 0.6s forwards;
+}
+
+@keyframes fadeIn{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+  .card:hover{
+transform:scale(1.05);
+box-shadow:0 10px 40px rgba(255,255,255,0.1);
+}
+
+  .modal-box{
+animation:zoom 0.3s ease;
+}
+
+@keyframes zoom{
+from{transform:scale(0.8); opacity:0;}
+to{transform:scale(1); opacity:1;}
+}
 </style>
 </head>
 
@@ -257,8 +323,13 @@ letter-spacing:1px;
 <button onclick="event.stopPropagation(); addToCart('Playera Offside Verde',399)">Agregar</button>
 </div>
 
+  <p style="opacity:0.5">
+Drop limitado. No habrá restock.
+</p> 
+  
 </div>
 </div>
+  
 
 <!-- MODAL -->
 <div id="product-modal">
