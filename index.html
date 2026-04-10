@@ -169,6 +169,7 @@ border:2px solid #000;
 <div class="cart">
 🛒 <span id="cart-count">0</span><br>
 <button onclick="sendWhatsApp()">Comprar</button>
+  <div id="cart-items" style="font-size:12px;margin-top:10px"></div>
 </div>
 
 <div class="container">
@@ -226,11 +227,18 @@ border:2px solid #000;
 <button onclick="event.stopPropagation(); addToCart('Basic Offside Blanca',299)">Agregar</button>
 </div>
 
-<div class="card playeras">
+<div class="card playeras" onclick="openModal('Playera Offside Blanca',399,['https://i.postimg.cc/NfXS2rW3/Gemini-Generated-Image-enenqoenenqoenen.png'])">
+<img src="https://i.postimg.cc/NfXS2rW3/Gemini-Generated-Image-enenqoenenqoenen.png">
+<h3>Playera Offside Blanca</h3>
+<p>$399 MXN</p>
+<button onclick="event.stopPropagation(); addToCart('Playera Offside Blanca',399)">Agregar</button>
+</div>
+
+<div class="card playeras" onclick="openModal('Playera Offside Verde',399,['https://i.postimg.cc/tg3jf3Lj/Gemini-Generated-Image-xl9st8xl9st8xl9s.png'])">
 <img src="https://i.postimg.cc/tg3jf3Lj/Gemini-Generated-Image-xl9st8xl9st8xl9s.png">
-<h3>Fresh Offside Blanca</h3>
-<p>$599 MXN</p>
-<button onclick="event.stopPropagation(); addToCart('Fresh Offside Blanca',599)">Agregar</button>
+<h3>Playera Offside Verde</h3>
+<p>$399 MXN</p>
+<button onclick="event.stopPropagation(); addToCart('Playera Offside Verde',399)">Agregar</button>
 </div>
 
 </div>
@@ -289,10 +297,20 @@ toggleMenu();
 
 function addToCart(name,price){
 cart.push({name,price});
-document.getElementById('cart-count').innerText=cart.length;
-alert('Agregado al carrito 🛒');
+updateCart();
 }
 
+  function updateCart(){
+document.getElementById('cart-count').innerText=cart.length;
+
+let html='';
+cart.forEach(item=>{
+html+=`<div>- ${item.name}</div>`;
+});
+
+document.getElementById('cart-items').innerHTML=html;
+}
+  
 function sendWhatsApp(){
 let message='Hola, quiero comprar:%0A';
 let total=0;
