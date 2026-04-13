@@ -219,6 +219,88 @@ animation:zoom 0.3s ease;
 from{transform:scale(0.8); opacity:0;}
 to{transform:scale(1); opacity:1;}
 }
+
+  @media (max-width: 768px){
+
+/* HERO */
+.hero{
+height:70vh;
+padding:20px;
+}
+
+.hero h1{
+font-size:35px;
+}
+
+.hero p{
+font-size:14px;
+}
+
+.hero button{
+padding:10px 20px;
+font-size:14px;
+}
+
+/* HEADER */
+.logo{
+font-size:18px;
+}
+
+/* PRODUCTOS GRID */
+.products{
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+/* CARDS */
+.card{
+padding:10px;
+}
+
+.card h3{
+font-size:14px;
+}
+
+.card p{
+font-size:13px;
+}
+
+/* BOTONES */
+button{
+font-size:12px;
+padding:8px;
+}
+
+/* MODAL */
+.modal-box{
+flex-direction:column;
+padding:15px;
+}
+
+#main-img{
+max-height:300px;
+object-fit:cover;
+}
+
+/* THUMBS */
+.thumb{
+width:50px;
+height:50px;
+}
+
+/* CARRITO */
+.cart{
+bottom:10px;
+right:10px;
+padding:10px;
+font-size:12px;
+}
+
+}
+
+  body{
+-webkit-tap-highlight-color: transparent;
+}
 </style>
 </head>
 
